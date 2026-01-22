@@ -1,6 +1,6 @@
-📘 Academic Decision Support System
-📌 Project Overview
+# Academic Decision Support System
 
+*  Project Overview
 The Academic Decision Support System (ADSS) is designed to assist educators and students by predicting whether a student is likely to pass or fail based on academic and behavioral factors, and by providing actionable recommendations to improve academic performance.
 
 The system combines:
@@ -36,6 +36,8 @@ Academic_Decision_Support_System/
 ├── generate_dataset.py
 └── README.md
 
+
+
 📊 Datasets Used
 1️⃣ Real Dataset (For Machine Learning Prediction)
 
@@ -61,9 +63,12 @@ School support
 
 Exam and internal assessment scores
 
+
+
 📌 This dataset forms the backbone of the predictive model.
 
 2️⃣ Synthetic Dataset (For Guidance & Decision Support)
+
 
 File: student_academic_data.csv
 
@@ -86,6 +91,8 @@ Student interests
 Extracurricular activity involvement
 
 Academic risk level
+
+
 
 📌 Synthetic data is generated to overcome privacy concerns and data availability limitations while still enabling realistic decision-support logic.
 
@@ -121,7 +128,7 @@ NumPy
 
 ✅ Day 1 Outcomes
 
-✔ Clean and organized project folder structure created
+✔ Clean and organized project folder structure created.
 ✔ Real-world dataset identified and stored securely
 ✔ Synthetic dataset generated and saved for reuse
 ✔ Clear separation between prediction data and guidance data
