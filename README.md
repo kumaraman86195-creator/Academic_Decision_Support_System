@@ -1,173 +1,149 @@
-# Academic Decision Support System (ADSS)
+#  Academic Decision Support System (ADSS)
 
-## Project Overview
-The Academic Decision Support System (ADSS) is designed to assist educators and students by predicting whether a student is likely to pass or fail based on academic and behavioral factors, and by providing actionable recommendations to improve academic performance and career direction.
+**Major Project — Progress Up to Day 3**
 
-This project aims to build an intelligent system that predicts student pass/fail outcomes and provides academic and career guidance based on study behavior, attendance, performance, interests, and support factors.
+##  Project Summary  
 
----
+This project aims to develop an intelligent system that predicts student academic outcomes (**Pass/Fail**) and provides personalized academic, course, and career guidance based on performance, study habits, attendance, interests, and support systems.
 
-## System Uses
+The system uses:
 
-- Real student performance data for machine learning prediction  
-- Synthetic student data for guidance, recommendations, and career decisions  
-
----
-
-## Current Progress
-
-✔ Project structure created  
-✔ Real dataset collected  
-✔ Synthetic dataset generated  
-✔ Dataset organized into folders  
-✔ Real dataset explored and analyzed  
+- **Real-world student performance data** for machine learning prediction  
+- **Synthetic student academic data** for guidance and recommendation modules  
 
 ---
 
-## Project Structure (Current)
-
+##  Current Project Structure  
 Academic_Decision_Support_System/
 │
 ├── data/
 │ ├── raw/
-│ │ └── student-mat.csv   # Real dataset for ML
+│ │ └── student-mat.csv # Real dataset
 │ │
-│ └── synthetic/
-│ └── student_academic_data.csv # Generated synthetic dataset
-│
+│ ├── synthetic/
+│    └── student_academic_data.csv # Synthetic dataset
+│ 
 ├── notebooks/
-│ └── 01_data_exploration.ipynb # Data exploration notebook
+│ └── 01_data_exploration.ipynb
 │
 ├── src/
 ├── models/
 ├── app/
 ├── reports/
-└── generate_dataset.py # Synthetic dataset generator
+└── generate_dataset.py
 
 ---
 
-## 📊 Datasets Used
+##  Datasets Used  
 
-### 1️⃣ Real Dataset — Student Performance (For ML Prediction)
+### 1️⃣ Real Dataset — Student Performance  
 
-**Source:** UCI Machine Learning Repository  
 **File:** `student-mat.csv`  
-**Purpose:** Train pass/fail prediction model  
+**Source:** UCI Machine Learning Repository  
+**Purpose:** Train Pass/Fail machine learning model  
 
-**Key Features:**
+**Key Attributes Used:**
 - Study time  
 - Absences  
 - Family support  
 - School support  
-- Student grades (G1, G2, G3)  
-
-📌 This dataset forms the backbone of the predictive model.
+- Academic grades (G1, G2, G3)  
 
 ---
 
-### 2️⃣ Synthetic Dataset — Student Academic Profile (For Guidance System)
+### 2️⃣ Synthetic Dataset — Student Academic Profiles  
 
 **File:** `student_academic_data.csv`  
-**Purpose:** Guidance and recommendation system  
+**Purpose:** Support guidance, recommendations, and career decisions  
 
 **Includes:**
-- Attendance  
-- Study hours  
-- Subject marks  
-- Student interest areas  
-- Family support level  
-- Extracurricular involvement  
-- Academic risk level  
-- Stream and career guidance  
-
-📌 Synthetic data is used to protect privacy while enabling realistic decision logic.
-
----
-
-## 🛠️ Synthetic Dataset Generation
-
-The script `generate_dataset.py` generates realistic synthetic student records including:
-
-- Daily study hours  
-- Attendance percentage  
+- Attendance patterns  
 - Subject-wise marks  
-- Interest domains  
+- Interest areas  
 - Activity involvement  
-- Academic risk level  
-
-This dataset is used **only for guidance**, not ML training.
+- Risk level classification  
 
 ---
 
-## 📅 Work Completed So Far
-
-### ✅ Day 1 — Project Setup & Dataset Preparation
-- Created project folder structure  
-- Stored real dataset in `data/raw/`  
-- Generated synthetic dataset using Python  
-- Saved synthetic dataset in `data/synthetic/`  
-- Ensured data files are reusable  
+##  Work Completed  
 
 ---
 
-### ✅ Day 2 — Real Dataset Exploration & Understanding
+###  Day 1 — Project Setup & Dataset Preparation  
 
-**Tasks Performed:**
-- Loaded real dataset into Python  
-- Checked dataset shape and structure  
-- Analyzed column data types  
-- Verified missing values  
-- Generated summary statistics  
-- Created Pass/Fail target column  
-- Analyzed:
-  - Study time vs grades  
-  - Absences vs performance  
-  - Pass/Fail distribution  
-- Identified key features for ML modeling  
+- Created structured project folders  
+- Added real dataset for ML training  
+- Generated synthetic student academic dataset  
+- Organized datasets into appropriate folders  
 
 ---
 
-## 📌 Key Insights from Day 2
+###  Day 2 — Dataset Exploration & Understanding  
 
-- Dataset contains **395 student records**  
-- No missing values found  
-- Students who study more tend to score higher  
-- Students with high absences tend to perform worse  
-- Pass rate is higher than fail rate  
-
-**Important prediction features identified:**
-- Study time  
-- Absences  
-- Family support  
-- School support  
+- Loaded and inspected real dataset  
+- Checked dataset size, structure, and column types  
+- Verified absence of missing values  
+- Analyzed grade distributions  
+- Studied impact of study time and absences on grades  
+- Created Pass/Fail classification label  
+- Identified key features for prediction  
 
 ---
 
-## 🎯 Next Planned Step (Day 3)
+###  Day 3 — Data Cleaning & Feature Preparation  
 
-➡ Data Cleaning  
-➡ Feature Encoding  
-➡ Feature Selection  
-➡ Preparing dataset for Machine Learning  
+**Tasks Completed:**
+- Reloaded real dataset for processing  
+- Created binary Pass/Fail target variable based on final grade  
+- Selected academically meaningful features:
+  - Study time  
+  - Absences  
+  - Family support  
+  - School support  
+- Removed unrelated demographic attributes to reduce noise  
+- Encoded categorical features into numeric values  
+- Verified all model inputs are numeric  
+- Created a cleaned and ML-ready dataset  
 
 ---
 
-## 🎓 Academic Justification
+##  Key Outcomes from Day 3  
 
-- Real dataset is used for predictive modeling to ensure credibility  
-- Synthetic dataset is used for behavioral and career guidance due to privacy constraints  
-- This ensures ethical, scientific, and academic validity  
+- Machine learning target column successfully created  
+- Dataset transformed into numeric format  
+- Only relevant educational features retained  
+- Noise reduced for better prediction accuracy  
+- Final dataset prepared for machine learning model training  
 
 ---
 
-## 📌 Author
+## 🎓 Academic Justification  
+
+- Real dataset ensures **scientific credibility** in ML predictions  
+- Synthetic dataset supports **privacy-safe guidance and recommendations**  
+- Feature selection improves **model interpretability and performance**  
+- Data preparation follows **industry-standard machine learning best practices**  
+
+---
+
+##  Next Step — Day 4 Plan  
+
+➡ Train Pass/Fail Machine Learning Model  
+➡ Evaluate prediction accuracy  
+➡ Save trained model for reuse  
+
+---
+
+##  Project Status  
+
+🟢 **Progressing — Data Ready for Model Training**
+
+---
+
+##  Author  
 
 **Aman Kumar**  
-B.Tech CSE — Major Project  
-Academic Decision Support System  
+B.Tech Computer Science Engineering  
+Major Project — Academic Decision Support System  
 
----
 
-## 📌 Status
-
-🟢 **Project in Progress — Day 2 Completed**
