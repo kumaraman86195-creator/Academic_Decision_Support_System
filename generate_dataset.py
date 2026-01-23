@@ -39,7 +39,7 @@ df["overall_percentage"] = (
 ) / 3
 
 df["predicted_result"] = np.where(
-    (df["overall_percentage"] >= 40) & (df["attendance_percentage"] >= 75),
+    (df["overall_percentage"] >= 40) & (df["attendance_percentage"] >= 60),
     "Pass",
     "Fail"
 )
