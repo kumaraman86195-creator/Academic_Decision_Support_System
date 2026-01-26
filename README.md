@@ -34,9 +34,10 @@ Academic_Decision_Support_System/
 │ └── 03_model_training.ipynb
 │
 ├── models/
-├── src/
+| └── pass_fail_model.pkl
 ├── app/
 ├── reports/
+| └── confusion_matrix.png
 └── generate_dataset.py
 
 ---
@@ -87,9 +88,10 @@ Academic_Decision_Support_System/
 **Random Forest Classifier**  
 Chosen for its **robustness, high accuracy, resistance to overfitting, and interpretability**.
 
+
 ---
 
-## 📊 Model Performance Results  
+## 📊 Random Forest Model Performance Results  
 
 ### ✅ Overall Model Accuracy  
 Model Accuracy: 0.90 (90%)
@@ -108,15 +110,6 @@ accuracy                           0.90        79
 
 macro avg 0.89 0.88 0.89 79
 weighted avg 0.90 0.90 0.90 79
-
-
-### 🔍 Interpretation  
-
-- The model performs **very well in predicting passing students**  
-- High recall ensures **fewer incorrect pass predictions**  
-- Balanced performance across both **Fail** and **Pass** classes  
-
----
 
 ## 📊 Confusion Matrix  
 
@@ -141,26 +134,124 @@ weighted avg 0.90 0.90 0.90 79
 Training Accuracy: 0.9937 (99.37%)
 Testing Accuracy: 0.8987 (89.87%)
 
+
 ---
 
-## 🔍 Underfitting / Overfitting Analysis  
 
-- Training accuracy is **high**, indicating strong learning  
-- Testing accuracy remains **high**, proving good generalization  
-- The accuracy gap is **small (~9%)**, suggesting **minor overfitting**  
+## 🟢 Day 5 — Model Upgrade to XGBoost & Performance Re-Evaluation
 
-### 📌 Conclusion  
 
-> The model **is not underfitting** (it has learned meaningful patterns).  
-> The model shows **minor acceptable overfitting**, common in ensemble models.  
-> Overall, the model **generalizes well to unseen student data**.
+### 📌 Model Updated
+**XGBoost Classifier** (Extreme Gradient Boosting)
+
+
+### 🔍 Why XGBoost Instead of Random Forest?
+
+
+| Limitation in Random Forest |        Advantage of XGBoost       |
+|-----------------------------|-----------------------------------|
+| Feature importance not      | Better normalized feature         |
+| normalized well             | importance                        |
+| Less control over boosting  | Boosting improves weak learners   |
+| Harder to tune for accuracy | Fine-grained hyperparameter tuning|
+| Weaker handling of grade    | Better grade importance learning  |
+|  feature weight             |                                   |
+
+📌 **XGBoost was selected to improve accuracy, interpretability, and handling of grade-based prediction signals.**
+
+
+---
+
+
+## 📊 XGBoost Model Performance
+
+
+### ✅ Overall Accuracy
+     Model Accuracy: 0.96(96%)
+
+📈 Performance improved compared to Random Forest.
+
+---
+
+## 📋 Classification Report  
+       precision    recall  f1-score   support
+
+           0       0.98      0.96      0.97       120
+           1       0.94      0.97      0.96        80
+
+    accuracy                           0.96       200
+   macro avg       0.96      0.97      0.96       200
+weighted avg       0.97      0.96      0.97       200
+
+
+---
+
+## 📊 Confusion Matrix  
+    [[115   5]
+    [ 2  78]]
+
+### 🧠 Interpretation  
+
+| Actual | Predicted Fail | Predicted Pass |
+| ------ | -------------- | -------------- |
+| Fail   | 115 Correct    | 5 Incorrect    |
+| Pass   | 2 Incorrect    | 78 Correct     |
+
+✔ Reduced misclassification  
+✔ Improved recall for passing students  
+✔ Strong generalization capability  
+
+---
+
+## 🖼 Confusion Matrix Visualization  
+
+Saved as:  
+reports/confusion_matrix.png
+
+
+📌 This image visually represents model classification accuracy.
+
+---
+
+## 📈 Training vs Testing Accuracy  
+     Training Accuracy: 1.0
+     Testing Accuracy: 0.965
+
+### 🔍 Overfitting Analysis  
+
+- Training accuracy remains high  
+- Testing accuracy is also strong  
+- Performance gap is **small**, indicating **good generalization**  
+- Model is **not underfitting** and shows **acceptable overfitting**
+
+---
+
+## 💾 Model Saved for Deployment  
+
+Saved trained model file:
+models/pass_fail_model.pkl
+
+
+📌 The model can now be reused without retraining.
+
+---
+
+## 🧪 Model Tested on New Student Input  
+
+The model was tested with **new unseen student data**, confirming:
+
+✔ Accurate predictions  
+✔ Stable output  
+✔ Real-time prediction readiness  
+
+📌 The model is now suitable for integration into a web or decision-support application.
 
 ---
 
 ## 🎓 Academic Justification  
 
 - Real student dataset ensures **scientific credibility**  
-- Random Forest chosen for **stability, accuracy, and explainability**  
+- XGBoost selected for **superior accuracy, boosting capability, and feature importance normalization**  
 - Evaluation metrics include:
   - Accuracy  
   - Precision  
@@ -171,18 +262,17 @@ Testing Accuracy: 0.8987 (89.87%)
 
 ---
 
-## 🎯 Next Planned Step — Day 5  
+## 🎯 Next Planned Step — Day 6  
 
-➡ Save trained ML model  
-➡ Load model for real-time predictions  
-➡ Build real-time student performance predictor  
-➡ Begin deployment module  
-
+➡ Generate performance and insight graphs
+➡ Finalize ML model
+➡ Results locked
+➡ Ready for system integration
 ---
 
 ## 📌 Project Status  
 
-🟢 **Machine Learning Model Successfully Trained & Evaluated**  
+🟢 **XGBoost Model Successfully Trained, Evaluated & Saved**  
 🚧 **System Development In Progress**
 
 ---
@@ -193,6 +283,5 @@ Testing Accuracy: 0.8987 (89.87%)
 B.Tech Computer Science & Engineering  
 Final Year Major Project  
 **Academic Decision Support System (ADSS)**  
-
 
 
