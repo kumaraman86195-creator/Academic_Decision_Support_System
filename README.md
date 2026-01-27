@@ -2,13 +2,7 @@
 
 ### Major Project — Progress Up to Day 4  
 **Project Type:** B.Tech CSE Final Year Major Project  
-
----
-
-## 📌 Project Title  
-**Intelligent Academic Performance Prediction and Guidance System**
-
----
+ss---
 
 ## 📌 Project Objective  
 
@@ -35,10 +29,26 @@ Academic_Decision_Support_System/
 │
 ├── models/
 | └── pass_fail_model.pkl
+|
+├── src/
+|   ├──recommendation/
+|   |              ├──weak_subject_detection.py
+|   |              └──weak_sub_feedback_test.py
+|   ├──data_loder.py
+|   ├──preprocess.py
+|   ├──train_model.py
+|   ├──predict.py
+|   ├──evaluate_model.py
+|   └──__init__.py
+|
+|
+|
 ├── app/
 ├── reports/
 | └── confusion_matrix.png
-└── generate_dataset.py
+├── generate_dataset.py
+|
+└──test.py
 
 ---
 
@@ -262,18 +272,39 @@ The model was tested with **new unseen student data**, confirming:
 
 ---
 
-## 🎯 Next Planned Step — Day 6  
+## 🟢 Day 6 — Academic Weakness Detection & Recommendation Module
 
-➡ Generate performance and insight graphs
-➡ Finalize ML model
-➡ Results locked
-➡ Ready for system integration
----
+- Created a dedicated `src/recommendation/` module to implement guidance and academic recommendation logic  
+- Developed a **weak area detection system** to identify student challenges across multiple dimensions:
+  - Academic grades  
+  - Attendance patterns  
+  - Stress levels  
+  - Motivation indicators  
+- Designed a **rule-based academic weakness identification framework** that classifies weak areas such as:
+  - Low subject performance  
+  - Poor attendance behavior  
+  - High academic stress  
+  - Low motivation and engagement  
+- Implemented a **personalized feedback generation engine**, producing tailored recommendations for each detected weakness  
+- Converted exploratory notebook logic into a **production-ready Python module** inside `src/`, improving modularity and maintainability  
+- Tested the weak-area detection system using **real student data**, validating accuracy and consistency  
 
-## 📌 Project Status  
+📌 This module enables the system to move beyond prediction and begin delivering **actionable academic guidance**.
 
-🟢 **XGBoost Model Successfully Trained, Evaluated & Saved**  
-🚧 **System Development In Progress**
+## 🎯 Next Planned Step — Day 7  
+
+- Develop a **student academic risk scoring algorithm**  
+- Classify students into **Low Risk / Medium Risk / High Risk** categories  
+- Integrate **risk score output with weak-area detection results** for more meaningful decision support  
+- Convert notebook-based risk scoring logic into a **structured `src/` module**  
+- Enable combined insights to support **early intervention and targeted academic counseling**
+
+## 📌 Project Status (Up to Day 6)
+
+-The project has successfully completed data preparation, exploratory analysis, feature engineering, and machine -learning model development using XGBoost.
+-Student performance prediction is operational with 96% accuracy and strong evaluation metrics.
+-An academic weakness detection module has been implemented to identify learning gaps and generate personalized  recommendations.
+-The system is progressing toward full academic risk assessment and decision-support integration.
 
 ---
 
