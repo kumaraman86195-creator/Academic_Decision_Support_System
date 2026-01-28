@@ -291,22 +291,24 @@ The model was tested with **new unseen student data**, confirming:
 
 📌 This module enables the system to move beyond prediction and begin delivering **actionable academic guidance**.
 
-## 🎯 Next Planned Step — Day 7  
+## 🟢 Day 7 — Academic Risk Scoring Module
 
-- Develop a **student academic risk scoring algorithm**  
-- Classify students into **Low Risk / Medium Risk / High Risk** categories  
-- Integrate **risk score output with weak-area detection results** for more meaningful decision support  
-- Convert notebook-based risk scoring logic into a **structured `src/` module**  
-- Enable combined insights to support **early intervention and targeted academic counseling**
-
-## 📌 Project Status (Up to Day 6)
-
--The project has successfully completed data preparation, exploratory analysis, feature engineering, and machine -learning model development using XGBoost.
--Student performance prediction is operational with 96% accuracy and strong evaluation metrics.
--An academic weakness detection module has been implemented to identify learning gaps and generate personalized  recommendations.
--The system is progressing toward full academic risk assessment and decision-support integration.
+- Developed a **student academic risk scoring algorithm** to assess overall performance risk  
+- Classified students into **Low Risk / Medium Risk / High Risk** categories  
+- Integrated **risk score results with weak-area detection outputs** to provide more meaningful and actionable academic decision support  
 
 ---
+
+## 🎯 Day 8 — Planned Step: Course Recommendation System
+
+- Design a **course recommendation engine** based on student performance, interests, and risk level  
+- Integrate **course recommendations with academic risk scores** to suggest appropriate learning paths  
+- Provide personalized course guidance to support academic improvement and career readiness  
+## 📌 Project Status (Up to Day 7)
+
+The system now supports student performance prediction using XGBoost.
+weak-area detection, personalized feedback, and academic risk classification (Low/Medium/High).
+Core analytics and decision-support modules are complete, and development is progressing toward course recommendation integration.
 
 ## 📌 Author  
 
