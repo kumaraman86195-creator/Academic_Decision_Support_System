@@ -1,58 +1,132 @@
-import pandas as pd
 import numpy as np
-import os
+import pandas as pd
 
 np.random.seed(42)
+n = 5000
+data = []
 
-n = 100500
+for _ in range(n):
+    cls = np.random.choice([9, 10, 11, 12])
+    stream = "General"
 
-data = {
-    "student_id": range(1, n + 1),
-    "grade_level": np.random.randint(6, 13, n),
-    "study_hours_per_day": np.round(np.random.uniform(0.5, 6, n), 1),
-    "attendance_percentage": np.random.randint(60, 100, n),
-    "absences": np.random.randint(0, 30, n),
-    "family_support_level": np.random.choice(
-        ["Low", "Medium", "High"], n, p=[0.25, 0.45, 0.30]
-    ),
-    "school_support_level": np.random.choice(
-        ["Low", "Medium", "High"], n, p=[0.30, 0.45, 0.25]
-    ),
-    "math_marks": np.random.randint(30, 100, n),
-    "science_marks": np.random.randint(30, 100, n),
-    "english_marks": np.random.randint(30, 100, n),
-    "interest_area": np.random.choice(
-        ["Science", "Commerce", "Arts", "Sports"], n
-    ),
-    "activity_involvement": np.random.choice(
-        ["Yes", "No"], n, p=[0.55, 0.45]
-    ),
-    "activity_performance_level": np.random.choice(
-        ["Low", "Medium", "High"], n, p=[0.3, 0.4, 0.3]
-    )
-}
+    subjects = {
+        "physics": np.nan,
+        "chemistry": np.nan,
+        "biology": np.nan,
+        "maths": np.nan,
+        "english": np.nan,
+        "computer": np.nan,
+        "commerce_sub": np.nan,
+        "arts_sub": np.nan
+    }
 
-df = pd.DataFrame(data)
+    # ---------------------------
+    # SUBJECT ASSIGNMENT
+    # ---------------------------
+    if cls <= 10:
+        subjects.update({
+            "maths": np.random.randint(25, 100),
+            "english": np.random.randint(25, 100),
+            "computer": np.random.randint(25, 100),
+            "physics": np.random.randint(25, 100),
+            "chemistry": np.random.randint(25, 100)
+        })
+    else:
+        stream = np.random.choice(["Medical", "Non-Medical", "Commerce", "Arts"])
 
-df["overall_percentage"] = (
-    df["math_marks"] + df["science_marks"] + df["english_marks"]
-) / 3
+        if stream == "Non-Medical":
+            subjects.update({
+                "physics": np.random.randint(25, 100),
+                "chemistry": np.random.randint(25, 100),
+                "maths": np.random.randint(25, 100),
+                "english": np.random.randint(30, 100),
+                "computer": np.random.randint(30, 100)
+            })
+        elif stream == "Medical":
+            subjects.update({
+                "physics": np.random.randint(25, 100),
+                "chemistry": np.random.randint(25, 100),
+                "biology": np.random.randint(25, 100),
+                "english": np.random.randint(30, 100)
+            })
+        elif stream == "Commerce":
+            subjects.update({
+                "commerce_sub": np.random.randint(25, 100),
+                "maths": np.random.randint(25, 100),
+                "english": np.random.randint(30, 100),
+                "computer": np.random.randint(30, 100)
+            })
+        else:  # Arts
+            subjects.update({
+                "arts_sub": np.random.randint(25, 100),
+                "english": np.random.randint(30, 100)
+            })
 
-df["predicted_result"] = np.where(
-    (df["overall_percentage"] >= 40) & (df["attendance_percentage"] >= 60),
-    "Pass",
-    "Fail"
-)
+    # ---------------------------
+    # BEHAVIOR FEATURES
+    # ---------------------------
+    previous_marks = np.random.randint(30, 100)
+    study_hours = np.random.uniform(0.5, 6)
+    absences = np.random.randint(0, 16)
+    family_support = np.random.choice([0, 1], p=[0.35, 0.65])
+    school_support = np.random.choice([0, 1], p=[0.4, 0.6])
 
-df["risk_level"] = pd.cut(
-    df["overall_percentage"],
-    bins=[0, 40, 60, 100],
-    labels=["High", "Medium", "Low"]
-)
+    avg_marks = np.nanmean(list(subjects.values()))
 
-# 🔽 CHANGE THIS PATH
+    # ---------------------------
+    # HARD FAIL FLOOR
+    # ---------------------------
+    if avg_marks < 35:
+        pass_fail = 0
+
+    else:
+        # PRIMARY — current performance
+        academic_score = avg_marks * 0.65
+        
+        # SECONDARY — previous academic record (STRONG)
+        history_score = previous_marks * 0.45
+        
+        # TERTIARY — effort
+        effort_score = study_hours * 3.0
+        
+        # LOW — attendance effect
+        attendance_penalty = absences * 0.20
+        
+        # VERY LOW — support influence
+        support_score = (family_support * 0.6) + (school_support * 0.4)
+        
+        # Noise
+        noise = np.random.uniform(-7, 7)
+
+        final_score = (
+            academic_score +
+            history_score +
+            effort_score +
+            support_score -
+            attendance_penalty +
+            noise
+        )
+
+        pass_fail = 1 if final_score >= 70 else 0
+
+    row = {
+        "class": cls,
+        "stream": stream,
+        "previous_marks": previous_marks,
+        "study_hours": study_hours,
+        "absences": absences,
+        "family_support": family_support,
+        "school_support": school_support,
+        "pass_fail": pass_fail
+    }
+
+    row.update(subjects)
+    data.append(row)
+
+
 file_path = r"C:\Users\kumar\Academic_Decision_Support_System\data\synthetic\student_academic_data.csv"
 
+df = pd.DataFrame(data)
 df.to_csv(file_path, index=False)
 
 print(f"File saved successfully at:\n{file_path}")
