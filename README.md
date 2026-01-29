@@ -177,7 +177,7 @@ Testing Accuracy: 0.8987 (89.87%)
 
 
 ### ✅ Overall Accuracy
-     Model Accuracy: 0.96(96%)
+     Model Accuracy: 0.86(86%)
 
 📈 Performance improved compared to Random Forest.
 
@@ -299,16 +299,26 @@ The model was tested with **new unseen student data**, confirming:
 
 ---
 
-## 🎯 Day 8 — Planned Step: Course Recommendation System
+## 🟢 Day 8 — Course Recommendation Engine
 
-- Design a **course recommendation engine** based on student performance, interests, and risk level  
-- Integrate **course recommendations with academic risk scores** to suggest appropriate learning paths  
-- Provide personalized course guidance to support academic improvement and career readiness  
-## 📌 Project Status (Up to Day 7)
+- Designed a **course recommendation engine** based on student performance, interests, and academic risk level  
+- Integrated **course recommendations with risk scores** to suggest appropriate and personalized learning paths  
+- Implemented **personalized course guidance** to support academic improvement and enhance career readiness  
 
-The system now supports student performance prediction using XGBoost.
-weak-area detection, personalized feedback, and academic risk classification (Low/Medium/High).
-Core analytics and decision-support modules are complete, and development is progressing toward course recommendation integration.
+---
+
+## 🎯 Day 9 — Planned Step: Stream Guidance System
+
+- Develop a **stream guidance engine** based on **Class 10 academic marks**  
+- Recommend suitable academic streams (Science / Commerce / Arts) using performance trends  
+- Integrate stream guidance into a unified **Guidance System module**  
+- Combine academic risk, weak-area insights, and stream recommendations for holistic student decision support .
+
+## 📌 Project Status (Up to Day 8)
+
+The system now supports student performance prediction using XGBoost, weak-area detection, academic risk classification, and personalized course recommendations.
+Core decision-support modules are implemented, enabling data-driven guidance for academic improvement and career planning. 
+Development is progressing toward stream guidance and a unified guidance system.
 
 ## 📌 Author  
 
