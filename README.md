@@ -307,18 +307,27 @@ The model was tested with **new unseen student data**, confirming:
 
 ---
 
-## 🎯 Day 9 — Planned Step: Stream Guidance System
+## 🟢 Day 9 — Stream Guidance System (Completed)
 
-- Develop a **stream guidance engine** based on **Class 10 academic marks**  
-- Recommend suitable academic streams (Science / Commerce / Arts) using performance trends  
-- Integrate stream guidance into a unified **Guidance System module**  
-- Combine academic risk, weak-area insights, and stream recommendations for holistic student decision support .
+- Developed a **stream guidance engine** based on **Class 10 academic marks**  
+- Implemented logic to recommend suitable academic streams (**Science / Commerce / Arts**)  
+- Integrated stream guidance into a unified **Guidance System module**  
+- Combined **academic risk scores, weak-area insights, and stream recommendations** to provide holistic student decision support  
 
-## 📌 Project Status (Up to Day 8)
+---
 
-The system now supports student performance prediction using XGBoost, weak-area detection, academic risk classification, and personalized course recommendations.
-Core decision-support modules are implemented, enabling data-driven guidance for academic improvement and career planning. 
-Development is progressing toward stream guidance and a unified guidance system.
+## 🎯 Day 10 — Planned Step: Career Guidance System
+
+- Develop a **career guidance engine** based on **Class 12 marks and chosen academic stream**  
+- Recommend suitable **career paths and professional domains** aligned with student performance  
+- Implement personalized **career recommendations and growth pathways**  
+- Integrate the career guidance system into the existing **Guidance System module** for end-to-end academic and career decision support  
+
+## 📌 Project Status (Up to Day 9)
+
+The system now includes XGBoost-based student performance prediction, weak-area detection, academic risk classification, course recommendation, and stream guidance modules.
+An integrated Guidance System provides personalized academic and career-oriented insights. Core decision-support functionality is complete, with career guidance development planned next.
+
 
 ## 📌 Author  
 
