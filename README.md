@@ -316,17 +316,17 @@ The model was tested with **new unseen student data**, confirming:
 
 ---
 
-## 🎯 Day 10 — Planned Step: Career Guidance System
+## 🎯 Day 10 —  Career Guidance System
 
 - Develop a **career guidance engine** based on **Class 12 marks and chosen academic stream**  
 - Recommend suitable **career paths and professional domains** aligned with student performance  
 - Implement personalized **career recommendations and growth pathways**  
 - Integrate the career guidance system into the existing **Guidance System module** for end-to-end academic and career decision support  
 
-## 📌 Project Status (Up to Day 9)
+## 📌 Project Status (Up to Day 10)
 
 The system now includes XGBoost-based student performance prediction, weak-area detection, academic risk classification, course recommendation, and stream guidance modules.
-An integrated Guidance System provides personalized academic and career-oriented insights. Core decision-support functionality is complete, with career guidance development planned next.
+An integrated Guidance System provides personalized academic and career-oriented insights. Core decision-support functionality is complete, with career guidance development .
 
 
 ## 📌 Author  
