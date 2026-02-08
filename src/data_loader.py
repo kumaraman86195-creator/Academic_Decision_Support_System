@@ -9,6 +9,6 @@ def load_data(path=None):
 
     if path is None:
         base_dir = os.path.dirname(os.path.dirname(__file__))
-        path = os.path.join(base_dir, "data", "raw", "student_performance_balanced.csv")
+        path = os.path.join(base_dir, "data", "synthetic", "student_academic_data.csv")
 
     return pd.read_csv(path)

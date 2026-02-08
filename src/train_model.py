@@ -15,16 +15,13 @@ def train_model(df):
 
     # Split features and target
     features = [
-    "study_hours_per_day",
-    "attendance_percentage",
-    "absences",
-    "sleep_hours",
-    "stress_level",
-    "motivation_level",
-    "family_support",
-    "school_support",
-    "activity_level",
-    "avg_grade"]
+        "avg_marks",
+        "previous_marks",
+        "study_hours",
+        "attendance_score",
+        "family_support",
+        "school_support"
+    ]
 
     X = df[features]
     y = df["pass_fail"]

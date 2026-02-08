@@ -1,61 +1,56 @@
-def detect_weak_areas(student_row):
-    """
-    Detect weak academic and behavioral areas for a student.
-    Returns a list of weakness labels.
-    """
+import pandas as pd
 
-    weak_areas = []
+STREAM_SUBJECT_MAP = {
+    "Science": ["maths", "physics", "chemistry", "biology", "english", "computer"],
+    "Commerce": ["maths", "economics", "business studies", "accountancy", "english", "computer"],
+    "Arts": ["Hindi", "english", "History", "Geography", "Political Science"]
+}
 
-    # Academic Performance
-    if student_row["avg_grade"] < 60:
-        weak_areas.append("Low Academic Performance")
+CLASS_9_10_SUBJECTS = [
+    "maths", "science","Social Science", "english", "computer"
+]
 
-    # Attendance Issues
-    if student_row["attendance_percentage"] < 75:
-        weak_areas.append("Poor Attendance")
-
-    if student_row["absences"] > 10:
-        weak_areas.append("High Absences")
-
-    # Study Habits
-    if student_row["study_hours_per_day"] < 2:
-        weak_areas.append("Low Study Time")
-
-    # Mental & Motivation Factors
-    if student_row["stress_level"] >= 3:
-        weak_areas.append("High Stress")
-
-    if student_row["motivation_level"] <= 1:
-        weak_areas.append("Low Motivation")
-
-    # If no weakness found
-    if not weak_areas:
-        weak_areas.append("No Major Weakness Detected")
-
-    return weak_areas
+ALL_SUBJECTS = [
+    "maths", "english", "physics", "chemistry",
+    "biology", "computer", "economics", "business studies", "accountancy", "Hindi", "History", "Geography", "Political Science", "science","Social Science"
+]
 
 
-def generate_weakness_feedback(weak_list):
-    """
-    Generate personalized improvement feedback based on weak areas.
-    """
+def detect_weak_subjects(row):
+    weak = []
+    critical = []
 
-    feedback_map = {
-        "Low Academic Performance": "Revise weak subjects regularly and practice more problem-solving questions.",
-        "Poor Attendance": "Improve class attendance to avoid missing important academic concepts.",
-        "High Absences": "Reduce absences and maintain consistent classroom participation.",
-        "Low Study Time": "Increase daily study hours and follow a structured study routine.",
-        "High Stress": "Practice stress management techniques like breaks, exercise, and mindfulness.",
-        "Low Motivation": "Set achievable goals and track progress to stay motivated.",
-        "No Major Weakness Detected": "Great job! Continue maintaining your strong academic habits."
-    }
+    cls = row.get("class", None)
+    stream = row.get("stream", None)
 
-    feedback = []
+    # ✅ Class 9–10 → ignore commerce & arts
+    if cls in [9, 10]:
+        subject_cols = CLASS_9_10_SUBJECTS
 
-    for weakness in weak_list:
-        if weakness in feedback_map:
-            feedback.append(feedback_map[weakness])
-        else:
-            feedback.append(f"Work on improving: {weakness}")
+    # ✅ Class 11–12 → filter by stream
+    elif stream in STREAM_SUBJECT_MAP:
+        subject_cols = STREAM_SUBJECT_MAP[stream]
 
-    return feedback
+    # ✅ Fallback
+    else:
+        subject_cols = ALL_SUBJECTS
+
+    for sub in subject_cols:
+        if sub in row and not pd.isna(row[sub]):
+            if row[sub] < 40:
+                critical.append(sub)
+            elif row[sub] < 55:
+                weak.append(sub)
+
+    return weak, critical
+
+
+def apply_weak_subject_detection(df):
+    valid_cols = [col for col in ALL_SUBJECTS if col in df.columns]
+    df["avg_marks"] = df[valid_cols].mean(axis=1) * 2
+
+    df["weak_subjects"], df["critical_subjects"] = zip(
+        *df.apply(detect_weak_subjects, axis=1)
+    )
+
+    return df

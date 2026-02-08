@@ -1,6 +1,6 @@
 import joblib
 import pandas as pd
-from preprocess import preprocess_data
+from src.preprocess import preprocess_data
 
 
 MODEL_PATH = "models/pass_fail_model.pkl"
