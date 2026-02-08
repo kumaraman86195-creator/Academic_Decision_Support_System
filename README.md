@@ -15,25 +15,34 @@ To develop a **machine learning–based decision support system** that predicts 
 Academic_Decision_Support_System/
 │
 ├── data/
-│ ├── raw/
-│ │ └── student-mat.csv
-│ ├── processed/
-│ │ └── student_mat_cleaned.csv
-│ └── synthetic/
-│ └── student_academic_data.csv
+|      ├── processed/
+│      │ └── student_mat_cleaned.csv
+│      └── synthetic/
+│            └── student_academic_data.csv
 │
 ├── notebooks/
 │ ├── 01_data_exploration.ipynb
 │ ├── 02_feature_engineering.ipynb
-│ └── 03_model_training.ipynb
-│
+│ ├── 03_model_training.ipynb
+| ├──04_weak_course_recommendation.ipynb
+│ └──05_stream_and_career_guidance.ipynb
+|
+|
 ├── models/
 | └── pass_fail_model.pkl
 |
 ├── src/
 |   ├──recommendation/
 |   |              ├──weak_subject_detection.py
-|   |              └──weak_sub_feedback_test.py
+|   |              ├──risk_detection.py
+|   |              ├──personalised_feedback.py
+|   |              ├──course_recommendation.py
+|   |              ├──pipeline.py
+|   |              └──test.py
+|   ├──guidance/
+|   |         ├──stream_guidance.py
+|   |         ├──career_guidance.py
+|   |         └── test.py
 |   ├──data_loder.py
 |   ├──preprocess.py
 |   ├──train_model.py
@@ -177,35 +186,36 @@ Testing Accuracy: 0.8987 (89.87%)
 
 
 ### ✅ Overall Accuracy
-     Model Accuracy: 0.86(86%)
+     Model Accuracy: 0.87(87%)
 
 📈 Performance improved compared to Random Forest.
 
 ---
 
 ## 📋 Classification Report  
-       precision    recall  f1-score   support
+           precision  recall  f1-score   support
 
-           0       0.98      0.96      0.97       120
-           1       0.94      0.97      0.96        80
+       0       0.79      0.72      0.75       284
+       1       0.89      0.93      0.91       716
 
-    accuracy                           0.96       200
-   macro avg       0.96      0.97      0.96       200
-weighted avg       0.97      0.96      0.97       200
+    accuracy                       0.87      1000
+   macro avg   0.84      0.82      0.83      1000
+weighted avg   0.86      0.87      0.86      1000
+
 
 
 ---
 
 ## 📊 Confusion Matrix  
-    [[115   5]
-    [ 2  78]]
+    [[204  80]
+    [ 53 663]]
 
 ### 🧠 Interpretation  
 
 | Actual | Predicted Fail | Predicted Pass |
 | ------ | -------------- | -------------- |
-| Fail   | 115 Correct    | 5 Incorrect    |
-| Pass   | 2 Incorrect    | 78 Correct     |
+| Fail   | 204 Correct    | 80 Incorrect    |
+| Pass   | 53 Incorrect    | 663 Correct     |
 
 ✔ Reduced misclassification  
 ✔ Improved recall for passing students  
@@ -224,8 +234,8 @@ reports/confusion_matrix.png
 ---
 
 ## 📈 Training vs Testing Accuracy  
-     Training Accuracy: 1.0
-     Testing Accuracy: 0.965
+     Training Accuracy: 0.9195
+     Testing Accuracy: 0.867
 
 ### 🔍 Overfitting Analysis  
 
@@ -316,24 +326,81 @@ The model was tested with **new unseen student data**, confirming:
 
 ---
 
-## 🎯 Day 10 —  Career Guidance System
+## 🟢 Day 10 —  Career Guidance System
 
 - Develop a **career guidance engine** based on **Class 12 marks and chosen academic stream**  
 - Recommend suitable **career paths and professional domains** aligned with student performance  
 - Implement personalized **career recommendations and growth pathways**  
 - Integrate the career guidance system into the existing **Guidance System module** for end-to-end academic and career decision support  
 
-## 📌 Project Status (Up to Day 10)
+## 🟢 Day 11 — End-to-End Decision Support Pipeline
 
-The system now includes XGBoost-based student performance prediction, weak-area detection, academic risk classification, course recommendation, and stream guidance modules.
-An integrated Guidance System provides personalized academic and career-oriented insights. Core decision-support functionality is complete, with career guidance development .
+- Developed a complete **end-to-end pipeline** integrating all core modules of the system  
+- Connected student performance prediction, weak-area detection, risk scoring, course recommendation, and stream guidance into a unified workflow  
+- Ensured modular execution through structured `src/` components for scalability and maintainability  
+- Validated the pipeline on real and synthetic student inputs for consistent decision-support output  
+
+---
+
+## 🟢 Day 12 — Frontend Development using Streamlit
+
+- Built an interactive **Streamlit-based frontend dashboard** for real-time academic decision support  
+- Enabled student input forms for predicting pass/fail outcomes and academic risk levels  
+- Displayed personalized recommendations including weak-area feedback, suggested courses, and stream guidance  
+- Prepared the system for deployment as a user-friendly academic guidance application  
 
 
-## 📌 Author  
+---
+
+# ✅ Project Completion Summary
+
+The **Academic Decision Support System (ADSS)** has been successfully completed as an end-to-end final year major project. The system integrates **student performance prediction using XGBoost**, academic weakness detection, risk classification, personalized course recommendations, stream guidance, and career-oriented decision support. All modules have been unified into a complete pipeline and deployed through an interactive **Streamlit-based frontend dashboard**. The project demonstrates a practical, real-world machine learning solution for academic improvement and student guidance.
+
+---
+
+# 🌟 Key Features Implemented
+
+- Pass/Fail Prediction using Machine Learning (XGBoost)
+- Academic Weak-Area Detection and Personalized Feedback
+- Student Risk Scoring (Low / Medium / High Risk)
+- Course Recommendation Engine based on Risk and Interests
+- Stream Guidance System based on Class 10 Performance
+- Career Guidance System based on Class 12 Marks and Stream
+- End-to-End Integrated Decision Support Pipeline
+- Real-Time Interactive Frontend using Streamlit
+
+---
+
+# 🎓 Conclusion
+
+This project provides a strong academic decision-support framework that can help educators and students identify performance risks early, improve learning outcomes, and plan suitable academic and career paths. The system combines predictive analytics with recommendation-based guidance, making it a comprehensive solution for student development.
+
+---
+
+# 🚀 Future Scope
+
+- Integration of deep learning models for improved prediction accuracy  
+- Deployment on cloud platforms for institutional usage  
+- Addition of real-time student monitoring dashboards  
+- Incorporation of NLP-based career counseling chatbot  
+- Expansion of course recommendations using industry platforms (Coursera, Udemy, etc.)
+
+---
+
+# 📌 Author
 
 **Aman Kumar**  
 B.Tech Computer Science & Engineering  
 Final Year Major Project  
 **Academic Decision Support System (ADSS)**  
+
+---
+
+# 📌 Status
+
+🟢 **Project Completed Successfully** ✅
+
+---
+
 
 
